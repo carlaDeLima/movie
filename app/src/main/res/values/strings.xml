@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">movie</string>
+
+    <!--navigation-->
+    <string name="title_filmes">Filmes</string>
+    <string name="title_favoritos">Favoritos</string>
+
+    <string name="sair">Sair</string>
+
+    <!--login-->
+    <string name="hint_user">Usuário</string>
+    <string name="hint_password">Senha</string>
+    <string name="text_login">Logar</string>
+</resources>
