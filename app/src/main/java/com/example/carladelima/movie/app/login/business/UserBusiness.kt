@@ -12,6 +12,7 @@ object UserBusiness : BaseBusiness() {
         onSuccess: (user: User) -> Unit,
         onError: (msg: Throwable) -> Unit
     ) {
+        var id: String
         with(UserNetwork) {
             getAutenticacao(
                 { autenticacao ->
@@ -19,8 +20,9 @@ object UserBusiness : BaseBusiness() {
                         { sessionWithLogin ->//validaçao
 
                             postIdSession(sessionWithLogin.request_token,
-                                { idSession ->
-                                    getAccount(idSession.)
+                                { idSession ->//session
+                                    id = idSession.session_id
+                                    //getAccount(idSession.)
                                 },
                                 {
                                     onError(it)

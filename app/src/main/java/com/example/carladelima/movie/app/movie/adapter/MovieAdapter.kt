@@ -27,10 +27,11 @@ class MovieAdapter : BaseAdapter<Movie, BaseViewHolder<Movie>>() {
                 nameMovie.text = item.title
 
                 Picasso
-                        .with(context)
-                        .load(Paths.urlImage + item.poster_path)
-                        .centerCrop()
-                        .into(imageMovie)
+                    .with(context)
+                    .load(Paths.urlImage + item.poster_path)
+                    .centerCrop()
+                    .resize(125, 188)
+                    .into(imageMovie)
 
                 imageMovie.setOnClickListener {
                     val intent = Intent(context, DetalheMovieActivity::class.java)

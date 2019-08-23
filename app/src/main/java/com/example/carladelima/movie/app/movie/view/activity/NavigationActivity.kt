@@ -15,12 +15,10 @@ class NavigationActivity : BaseActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_filmes -> {
-                message.setText(R.string.title_filmes)
                 this.supportFragmentManager.beginTransaction().replace(R.id.container, FilmesFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_favoritos -> {
-                message.setText(R.string.title_favoritos)
                 this.supportFragmentManager.beginTransaction().replace(R.id.container, FavoriteFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
@@ -32,6 +30,7 @@ class NavigationActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
 
+        this.supportFragmentManager.beginTransaction().replace(R.id.container, FilmesFragment()).commit()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 

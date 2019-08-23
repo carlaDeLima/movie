@@ -25,6 +25,7 @@ class DetalheMovieActivity : BaseActivity() {
                 .with(this)
                 .load(Paths.urlImage + it.poster_path)
                 .centerCrop()
+                .fit()
                 .into(imageMovie)
             titleMovie.text = it.title
             overviewMovie.text = it.overview

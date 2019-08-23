@@ -24,10 +24,8 @@ class FilmesFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         movieAdapter = MovieAdapter()
 
-
         movieViewModel.listMoviePopular()
         subscribeUI()
-
 
         filmesRecyclerView.adapter = movieAdapter
 
