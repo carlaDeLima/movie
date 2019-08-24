@@ -1,5 +1,6 @@
 package com.example.carladelima.movie.app.login.business
 
+import com.example.carladelima.movie.app.login.UserDatabase
 import com.example.carladelima.movie.app.login.model.User
 import com.example.carladelima.movie.app.login.network.UserNetwork
 import com.example.carladelima.movie.core.BaseBusiness
@@ -17,29 +18,49 @@ object UserBusiness : BaseBusiness() {
             getAutenticacao(
                 { autenticacao ->
                     postSessionWithLogin(username, password, autenticacao.request_token,
-                        { sessionWithLogin ->//validaçao
+                        { sessionWithLogin ->
 
                             postIdSession(sessionWithLogin.request_token,
-                                { idSession ->//session
+                                { idSession ->
                                     id = idSession.session_id
-                                    //getAccount(idSession.)
+                                    getAccount(idSession.session_id,
+                                        {
+                                            it.session_id = id
+                                            onSuccess(it)
+                                        },
+                                        {
+                                            onError(it)//usuario
+                                        })
                                 },
                                 {
-                                    onError(it)
+                                    onError(it)//sessao
                                 })
 
                         },
                         {
-                            onError(it)
+                            onError(it)//validação
                         }
                     )
                 },
                 { error ->
-                    onError(error)
+                    onError(error)//autenticação
                 }
             )
         }
 
+    }
+
+    fun logout(
+        onSuccess: () -> Unit,
+        onError: (msg: Throwable) -> Unit){
+        UserNetwork.deleteLogout(UserDatabase.getIdSession(),
+            {
+                onSuccess()
+            },
+            {
+                onError(it)
+            }
+        )
     }
 
 }

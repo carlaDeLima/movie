@@ -1,7 +1,6 @@
 package com.example.carladelima.movie.app.movie.network
 
 import android.annotation.SuppressLint
-import com.example.carladelima.movie.app.movie.model.Movie
 import com.example.carladelima.movie.app.movie.model.MoviesGeral
 import com.example.carladelima.movie.core.BaseNetwork
 import com.example.carladelima.movie.core.NetworkError
@@ -9,7 +8,7 @@ import com.example.carladelima.movie.core.Paths
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-object MovieNetwork: BaseNetwork() {
+object MovieNetwork : BaseNetwork() {
 
     private val movieAPI: MovieAPI by lazy {
         getRetrofitBuilder().build().create(MovieAPI::class.java)

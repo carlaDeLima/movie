@@ -1,6 +1,6 @@
 package com.example.carladelima.movie.app.login.model
 
-class AutenticacaoResponse(
+class APIResponse(
     var success: Boolean? = null,
     var expires_at: String = "",
     var request_token: String = "",

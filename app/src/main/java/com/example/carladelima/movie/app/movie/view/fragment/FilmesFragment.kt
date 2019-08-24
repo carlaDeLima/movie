@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.carladelima.movie.R
 import com.example.carladelima.movie.app.movie.adapter.MovieAdapter
+import com.example.carladelima.movie.app.movie.database.MovieDatabase
 import com.example.carladelima.movie.app.movie.view_model.MovieViewModel
 import com.example.carladelima.movie.core.BaseFragment
 import kotlinx.android.synthetic.main.fragment_filme.*
@@ -17,6 +18,8 @@ class FilmesFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        var list= MovieDatabase.getMovies()
+
         return inflater.inflate(R.layout.fragment_filme, container, false)
     }
 

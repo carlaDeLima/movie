@@ -26,8 +26,7 @@
 
         <activity
                 android:name="com.example.carladelima.movie.app.movie.view.activity.NavigationActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"/>
+                android:screenOrientation="portrait"/>
 
         <activity android:name=".app.movie.view.activity.DetalheMovieActivity"
                   android:screenOrientation="portrait"

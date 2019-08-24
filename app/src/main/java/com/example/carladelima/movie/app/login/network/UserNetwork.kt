@@ -1,7 +1,7 @@
 package com.example.carladelima.movie.app.login.network
 
 import android.annotation.SuppressLint
-import com.example.carladelima.movie.app.login.model.AutenticacaoResponse
+import com.example.carladelima.movie.app.login.model.APIResponse
 import com.example.carladelima.movie.app.login.model.User
 import com.example.carladelima.movie.core.BaseNetwork
 import com.example.carladelima.movie.core.Paths
@@ -16,7 +16,7 @@ object UserNetwork : BaseNetwork() {
     }
 
     fun getAutenticacao(
-        onSuccess: (response: AutenticacaoResponse) -> Unit,
+        onSuccess: (response: APIResponse) -> Unit,
         onError: (error: Throwable) -> Unit
     ) {
         userAPI.autenticacao(Paths.api_key)
@@ -33,7 +33,7 @@ object UserNetwork : BaseNetwork() {
     }
 
     fun postIdSession(
-        requestToken: String, onSuccess: (response: AutenticacaoResponse) -> Unit,
+        requestToken: String, onSuccess: (response: APIResponse) -> Unit,
         onError: (error: Throwable) -> Unit
     ) {
         userAPI.postIdSession(Paths.api_key, requestToken)
@@ -53,7 +53,7 @@ object UserNetwork : BaseNetwork() {
         user: String,
         pass: String,
         requestToken: String,
-        onSuccess: (response: AutenticacaoResponse) -> Unit,
+        onSuccess: (response: APIResponse) -> Unit,
         onError: (error: Throwable) -> Unit
     ) {
         userAPI.sessionWithLogin(Paths.api_key, user, pass, requestToken)
@@ -89,7 +89,7 @@ object UserNetwork : BaseNetwork() {
 
     fun deleteLogout(
         sessionId: String,
-        onSuccess: (response: AutenticacaoResponse) -> Unit,
+        onSuccess: (response: APIResponse) -> Unit,
         onError: (error: Throwable) -> Unit
     ) {
         userAPI.deleteSession(Paths.api_key, sessionId)

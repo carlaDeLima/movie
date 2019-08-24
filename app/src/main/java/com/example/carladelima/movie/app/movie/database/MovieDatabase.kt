@@ -15,6 +15,15 @@ object MovieDatabase : BaseDatabase() {
         }
     }
 
+    fun saveMovie(movie: Movie) {
+
+        Realm.getDefaultInstance().use { realm ->
+            realm.beginTransaction()
+            realm.copyToRealmOrUpdate(movie)
+            realm.commitTransaction()
+        }
+    }
+
     fun searchMovie(id: Int): Movie? {
         val realm = Realm.getDefaultInstance()
         realm
@@ -24,5 +33,13 @@ object MovieDatabase : BaseDatabase() {
                 return realm.copyFromRealm(it)
             }
         return null
+    }
+
+    fun getMovies(): List<Movie> {
+
+        return Realm.getDefaultInstance().use { realm ->
+            realm.where(Movie::class.java)
+                .findAll()
+        }
     }
 }

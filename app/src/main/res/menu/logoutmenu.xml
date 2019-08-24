@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/sair"
-        android:title="@string/title_favoritos"/>
+        android:title="@string/sair"/>
 
 </menu>
